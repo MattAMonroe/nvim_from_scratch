@@ -5,6 +5,7 @@ return {
     config = function()
         vim.g.opencode_opts = {
             events = {
+                enabled = true,
                 permissions = {
                     enabled = false,
                 },
