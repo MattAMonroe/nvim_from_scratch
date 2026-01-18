@@ -3,7 +3,17 @@ return {
     enabled = true,
     dependencies = { "folke/snacks.nvim", opts = { input = {}, picker = {}, terminal = {} } },
     config = function()
-        vim.g.opencode_opts = {}
+        vim.g.opencode_opts = {
+            provider = {
+                snacks = {
+                    win = {
+                        enter = true,
+                        width = math.floor(vim.o.columns * 0.4)
+                    }
+                },
+            }
+
+        }
         vim.o.autoread = true
     end,
     -- stylua: ignore
