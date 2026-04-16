@@ -1,3 +1,4 @@
+-- hello world
 return {
     'NickvanDyke/opencode.nvim',
     enabled = true,
@@ -6,7 +7,8 @@ return {
         vim.g.opencode_opts = {
             events = {
                 permissions = {
-                    enabled = true,
+                    enabled = false,
+                    prompt = false,
                     edits = {
                         enabled = false, -- Replaced by floating diff below
                     },
@@ -183,7 +185,6 @@ return {
                 title = ' Original ',
                 title_pos = 'center',
             })
-            vim.wo[left_win].diff = true
 
             -- Right window (proposed)
             local right_win = vim.api.nvim_open_win(buf_proposed, true, {
@@ -197,7 +198,17 @@ return {
                 title = ' Proposed ',
                 title_pos = 'center',
             })
-            vim.wo[right_win].diff = true
+
+            vim.api.nvim_win_call(left_win, function()
+                vim.cmd("silent! diffthis")
+                vim.cmd("silent! diffupdate")
+            end)
+            vim.api.nvim_win_call(right_win, function()
+                vim.cmd("silent! diffthis")
+                vim.cmd("silent! diffupdate")
+            end)
+
+            vim.api.nvim_set_current_win(left_win)
 
             -- Track state for cleanup
             local augroup = vim.api.nvim_create_augroup(
@@ -286,13 +297,6 @@ return {
                 once = true,
             })
         end
-
-        -- vim.api.nvim_create_autocmd("User", {
-        --     pattern = { "OpencodeEvent:*" },
-        --     callback = function(args)
-        --         vim.notify(vim.inspect(args))
-        --     end
-        -- })
 
         vim.api.nvim_create_autocmd("User", {
             group = vim.api.nvim_create_augroup("OpencodeFloatingDiff", { clear = true }),
