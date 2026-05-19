@@ -43,7 +43,7 @@ return {
             typescript = { "eslint_d" },
             javascriptreact = { "eslint_d" },
             typescriptreact = { "eslint_d" },
-            terraform = { "tflint" },
+            -- terraform = { "tflint" },
             go = { "golangcilint", "nilaway" },
             lua = { "selene" },
             json = { "jsonlint" },

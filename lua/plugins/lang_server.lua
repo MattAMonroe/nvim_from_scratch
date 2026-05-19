@@ -43,7 +43,6 @@ return {
                 "phpactor",
                 "powershell_es",
                 "terraformls",
-                "tflint",
                 "ts_ls",
                 "yamlls",
                 "zls",
