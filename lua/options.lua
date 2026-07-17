@@ -83,7 +83,6 @@ vim.g.markdown_fenced_languages = {
     "zig",
     "config",
     "confini",
-    "gdb",
     "java",
     "javacc",
     "javascript",
@@ -105,9 +104,13 @@ vim.g.markdown_fenced_languages = {
 }
 
 vim.filetype.add({
-    extension = {},
+    extension = {
+        ["*jenkinsfile*"] = "groovy",
+        ["jenkinsfile"] = "groovy",
+    },
     filename = {},
     pattern = {
         ["*Jenkinsfile*"] = "groovy",
+        ["*jenkinsfile*"] = "groovy",
     },
 })
