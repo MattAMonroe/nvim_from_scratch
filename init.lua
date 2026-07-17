@@ -17,6 +17,4 @@ require("lang_server")
 
 require("machine")
 
-vim.cmd.colorscheme("astrodark")
-
 require("colors")

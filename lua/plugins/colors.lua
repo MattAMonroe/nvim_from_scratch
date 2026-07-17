@@ -1,6 +1,37 @@
 return {
     { "vague2k/vague.nvim", lazy = false },
     {
+        "baskerville/bubblegum",
+        priority = 1000, -- Make sure to load this before all the other start plugins.
+        lazy = false,
+    },
+    {
+        "michalbachowski/vim-wombat256mod",
+        priority = 1000, -- Make sure to load this before all the other start plugins.
+        lazy = false,
+    },
+    {
+        "vim-scripts/werks.vim",
+        priority = 1000, -- Make sure to load this before all the other start plugins.
+        lazy = false,
+    },
+    {
+        "ribru17/bamboo.nvim",
+        priority = 1000, -- Make sure to load this before all the other start plugins.
+        lazy = false,
+    },
+    {
+        "croaker/mustang-vim",
+        priority = 1000, -- Make sure to load this before all the other start plugins.
+        lazy = false,
+    },
+    {
+        "rebelot/kanagawa.nvim",
+        priority = 1000, -- Make sure to load this before all the other start plugins.
+        opts = {},
+        lazy = false,
+    },
+    {
         "AstroNvim/astrotheme",
         priority = 1000, -- Make sure to load this before all the other start plugins.
         opts = {},

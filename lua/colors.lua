@@ -1,3 +1,7 @@
+-- vim.cmd.colorscheme("kanagawa-dragon")
+-- vim.cmd.colorscheme("bamboo")
+vim.cmd.colorscheme("astrodark")
+
 local function set_diff_colors()
     -- Standard diff highlights
     vim.api.nvim_set_hl(0, "DiffAdd", { bg = "#1a4d1a", fg = "#d0d0d0" })               -- Dark green for added lines
