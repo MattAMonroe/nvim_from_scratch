@@ -7,6 +7,13 @@ return {
     config = function()
         require("claudecode").setup({
             terminal_cmd = 'claude',
+            -- Hide tmux from Claude: with $TMUX set it wraps OSC 52 clipboard
+            -- writes in tmux passthrough, which nvim's terminal can't parse
+            -- (base64 garbage over the input, clipboard never set)
+            env = {
+                TMUX = "",
+                TMUX_PANE = "",
+            },
             diff_opts = {
                 layout = "vertical",
             },
