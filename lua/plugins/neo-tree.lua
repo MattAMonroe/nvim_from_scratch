@@ -20,6 +20,25 @@ return {
             follow_current_file = {
                 enabled = true,
             },
+            commands = {
+                open = function(state)
+                    local fs_commands = require("neo-tree.sources.filesystem.commands")
+                    local node = state.tree:get_node()
+                    if node.type ~= "file" or not node.path:lower():match("%.html?$") then
+                        fs_commands.open(state)
+                        return
+                    end
+                    vim.ui.select({ "Editor", "Browser" }, {
+                        prompt = "Open " .. vim.fn.fnamemodify(node.path, ":t") .. " in:",
+                    }, function(choice)
+                        if choice == "Editor" then
+                            fs_commands.open(state)
+                        elseif choice == "Browser" then
+                            vim.fn.jobstart({ "open", node.path }, { detach = true })
+                        end
+                    end)
+                end,
+            },
             filtered_items = {
                 hide_by_name = {
                     ".urc",
